@@ -1,0 +1,199 @@
+{
+  "name": "novel-reader",
+  "displayName": "Novel Reader",
+  "description": "在 Cursor/VSCode 中摸鱼看小说",
+  "version": "0.1.0",
+  "publisher": "gongxh",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gongxh0901/novel-reader"
+  },
+  "bugs": {
+    "url": "https://github.com/gongxh0901/novel-reader/issues"
+  },
+  "homepage": "https://github.com/gongxh0901/novel-reader#readme",
+  "keywords": [
+    "novel",
+    "reader",
+    "小说",
+    "阅读器",
+    "摸鱼"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Novel Reader",
+      "properties": {
+        "novelReader.filePath": {
+          "type": "string",
+          "default": "",
+          "description": "小说文件路径"
+        },
+        "novelReader.linesPerPage": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "每页显示行数"
+        },
+        "novelReader.charsPerLine": {
+          "type": "number",
+          "default": 25,
+          "minimum": 5,
+          "maximum": 200,
+          "description": "每行最大字符数（超出自动换行）"
+        },
+        "novelReader.currentPage": {
+          "type": "number",
+          "default": 1,
+          "minimum": 1,
+          "description": "当前页码（翻页时自动更新）"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "novelReader.nextPage",
+        "title": "下一页",
+        "category": "Novel Reader",
+        "icon": "$(arrow-down)"
+      },
+      {
+        "command": "novelReader.prevPage",
+        "title": "上一页",
+        "category": "Novel Reader",
+        "icon": "$(arrow-up)"
+      },
+      {
+        "command": "novelReader.toggleVisibility",
+        "title": "显示/隐藏",
+        "category": "Novel Reader",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "novelReader.openFile",
+        "title": "打开小说文件",
+        "category": "Novel Reader",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "novelReader.jumpToPage",
+        "title": "跳转到指定页",
+        "category": "Novel Reader",
+        "icon": "$(search)"
+      },
+      {
+        "command": "novelReader.boss",
+        "title": "老板键 (Boss Key)",
+        "category": "Novel Reader",
+        "icon": "$(close)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "novelReader.prevPage",
+        "key": "ctrl+7",
+        "mac": "cmd+7"
+      },
+      {
+        "command": "novelReader.prevPage",
+        "key": "ctrl+numpad7",
+        "mac": "cmd+numpad7"
+      },
+      {
+        "command": "novelReader.toggleVisibility",
+        "key": "ctrl+8",
+        "mac": "cmd+8"
+      },
+      {
+        "command": "novelReader.toggleVisibility",
+        "key": "ctrl+numpad8",
+        "mac": "cmd+numpad8"
+      },
+      {
+        "command": "novelReader.nextPage",
+        "key": "ctrl+9",
+        "mac": "cmd+9"
+      },
+      {
+        "command": "novelReader.nextPage",
+        "key": "ctrl+numpad9",
+        "mac": "cmd+numpad9"
+      },
+      {
+        "command": "novelReader.boss",
+        "key": "ctrl+5",
+        "mac": "cmd+5"
+      },
+      {
+        "command": "novelReader.boss",
+        "key": "ctrl+numpad5",
+        "mac": "cmd+numpad5"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": []
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "novelReaderView",
+          "name": "阅读",
+          "type": "tree",
+          "visibility": "collapsed",
+          "when": "novelReader.panelVisible"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "novelReader.prevPage",
+          "when": "view == novelReaderView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "novelReader.nextPage",
+          "when": "view == novelReaderView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "novelReader.jumpToPage",
+          "when": "view == novelReaderView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "novelReader.openFile",
+          "when": "view == novelReaderView",
+          "group": "navigation@4"
+        },
+        {
+          "command": "novelReader.toggleVisibility",
+          "when": "view == novelReaderView",
+          "group": "navigation@5"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
