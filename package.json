@@ -2,7 +2,7 @@
   "name": "bitgong-novel-reader",
   "displayName": "Novel Reader 摸鱼阅读器",
   "description": "在 Cursor/VSCode 中摸鱼看小说",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "bitgong",
   "license": "MIT",
   "icon": "resources/icon.png",
