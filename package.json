@@ -1,6 +1,6 @@
 {
-  "name": "novel-reader",
-  "displayName": "Novel Reader",
+  "name": "bitgong-novel-reader",
+  "displayName": "Novel Reader 摸鱼阅读器",
   "description": "在 Cursor/VSCode 中摸鱼看小说",
   "version": "0.1.0",
   "publisher": "bitgong",
